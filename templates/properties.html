@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propriétés - Distillation</title>
+    <style>
+        /* === PROPERTIES.HTML STYLES === */
+        .properties-body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #2c3e50;
+        }
+
+        .properties-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .properties-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .properties-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #3498db; /* REMPLACE le gradient */
+}
+
+        .properties-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .properties-main {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .properties-page-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .properties-page-subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 3rem;
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .properties-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .properties-card h3 {
+            color: #3498db;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .properties-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .properties-table th {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .properties-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .properties-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .properties-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .properties-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.3);
+        }
+
+        .properties-footer {
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="properties-body">
+    <header class="properties-header">
+        <div class="properties-header-content">
+            <div class="properties-title">🧪 DistillationPro - Propriétés</div>
+            <div style="text-align: right;">
+                <div style="font-weight: 600;"></div>
+                <div style="font-size: 0.9rem; color: #7f8c8d;">Étape 2/4</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="properties-container">
+        <main class="properties-main">
+            <h1 class="properties-page-title">Propriétés des Composés</h1>
+            <p class="properties-page-subtitle">Températures d'ébullition, masses molaires et volatilités relatives</p>
+
+            <div class="properties-grid">
+               <div class="properties-card">
+    <h3>Propriétés Physiques</h3>
+    <table class="properties-table">
+        <tr>
+            <th>Composé</th>
+            <th>Température d'ébullition</th>
+            <th>Masse molaire</th>
+        </tr>
+        {% for c in data.compound_info %}
+        <tr>
+            <td>
+                <div style="font-weight: 700; font-size: 1.1rem;">
+                    {% if 'benzene' in c.name.lower() or 'benzène' in c.name.lower() %}
+                        Benzène
+                    {% elif 'toluene' in c.name.lower() or 'toluène' in c.name.lower() %}
+                        Toluène
+                    {% elif 'xylene' in c.name.lower() or 'xylène' in c.name.lower() %}
+                        Xylène
+                    {% else %}
+                        {{ c.name }}
+                    {% endif %}
+                </div>
+            </td>
+            <td>
+                <div style="text-align: center;">
+                    {{ c.Tb if c.Tb is not none else "N/A" }} K
+                    {% if c.Tb is not none %}
+                    <div style="font-size: 0.8rem; color: #7f8c8d;">
+                        ({{ (c.Tb - 273.15)|round(1) }} °C)
+                    </div>
+                    {% endif %}
+                </div>
+            </td>
+            <td>
+                <div style="text-align: center; font-weight: 600;">
+                    {% if 'benzene' in c.name.lower() or 'benzène' in c.name.lower() %}
+                        78,11 g/mol
+                    {% elif 'toluene' in c.name.lower() or 'toluène' in c.name.lower() %}
+                        92,14 g/mol
+                    {% elif 'xylene' in c.name.lower() or 'xylène' in c.name.lower() %}
+                        106,16 g/mol
+                    {% else %}
+                        {{ c.Mw if c.Mw is not none else "N/A" }} g/mol
+                    {% endif %}
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+                {% if data.K %}
+                <div class="properties-card">
+                    <h3>Constantes d'Équilibre</h3>
+                    <table class="properties-table">
+                        <tr>
+                            <th>Composé</th>
+                            <th>K</th>
+                            <th>α</th>
+                        </tr>
+                        {% for i in range(data.compounds|length) %}
+                        <tr>
+                            <td><strong>{{ data.compounds[i] }}</strong></td>
+                            <td>{{ data.K[i] | round(4) }}</td>
+                            <td>{{ data.alpha[i] | round(4) }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% endif %}
+
+                <div class="properties-card">
+                    <h3>Conditions Opératoires</h3>
+                    <table class="properties-table">
+                        <tr>
+                            <td><strong>Débit F</strong></td>
+                            <td>{{ data.F }} kmol/h</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pression P</strong></td>
+                            <td>{{ data.P/1e5 }} bar</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Composition z<sub>F</sub></strong></td>
+                            <td>{{ data.z_F }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <form method="POST" action="/identification">
+                {% for i in range(data.compounds|length) %}
+                    <input type="hidden" name="compounds" value="{{ data.compounds[i] }}">
+                    <input type="hidden" name="z_F" value="{{ data.z_F[i] }}">
+                {% endfor %}
+                <input type="hidden" name="F" value="{{ data.F }}">
+                <input type="hidden" name="P" value="{{ data.P }}">
+                
+                <button type="submit" class="properties-btn">
+                    Identifier LK/HK et Continuer →
+                </button>
+            </form>
+        </main>
+    </div>
+
+    <footer class="properties-footer">
+        <p>&copy; 2025 DistillationPro</p>
+    </footer>
+</body>
+</html>

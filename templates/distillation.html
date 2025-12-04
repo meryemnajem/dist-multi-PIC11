@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculs Distillation</title>
+    <style>
+        /* === DISTILLATION.HTML STYLES === */
+        .distillation-body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #2c3e50;
+        }
+
+        .distillation-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .distillation-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .distillation-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #3498db; /* REMPLACE le gradient */
+}
+        .distillation-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .distillation-main {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .distillation-page-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .distillation-page-subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 3rem;
+        }
+
+        .distillation-summary {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .distillation-params-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .distillation-param {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .distillation-param .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .distillation-param .label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .distillation-results {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .distillation-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .distillation-table th {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .distillation-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .distillation-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .distillation-calculations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .distillation-calculation-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .distillation-calculation-card h3 {
+            color: #3498db;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 0.5rem;
+        }
+
+        .distillation-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .distillation-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.3);
+        }
+
+        .distillation-footer {
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="distillation-body">
+    <header class="distillation-header">
+        <div class="distillation-header-content">
+            <div class="distillation-title">🧪 DistillationPro - Calculs</div>
+            <div style="text-align: right;">
+                <div style="font-weight: 600;">Votre Nom</div>
+                <div style="font-size: 0.9rem; color: #7f8c8d;">Calculs Intermédiaires</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="distillation-container">
+        <main class="distillation-main">
+            <h1 class="distillation-page-title">Calculs de Distillation</h1>
+            <p class="distillation-page-subtitle">Résultats intermédiaires et paramètres de calcul</p>
+
+            <div class="distillation-summary">
+                <h2 style="text-align: center; margin-bottom: 1.5rem;">📊 Conditions Opératoires</h2>
+                <div class="distillation-params-grid">
+                    <div class="distillation-param">
+                        <div class="value">{{ data.F }} kmol/h</div>
+                        <div class="label">Débit F</div>
+                    </div>
+                    <div class="distillation-param">
+                        <div class="value">{{ data.P/1e5 }} bar</div>
+                        <div class="label">Pression P</div>
+                    </div>
+                    <div class="distillation-param">
+                        <div class="value">{{ data.compounds|length }}</div>
+                        <div class="label">Composés</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="distillation-results">
+                <h2 style="color: #2c3e50; margin-bottom: 1.5rem;">⚖️ Constantes d'Équilibre</h2>
+                <table class="distillation-table">
+                    <tr>
+                        <th>Composé</th>
+                        <th>K</th>
+                        <th>α (Volatilité)</th>
+                    </tr>
+                    {% for i in range(data.compounds|length) %}
+                    <tr>
+                        <td><strong>{{ data.compounds[i] }}</strong></td>
+                        <td>{{ data.K[i] | round(4) }}</td>
+                        <td>{{ data.alpha[i] | round(4) }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class="distillation-calculations">
+                <div class="distillation-calculation-card">
+                    <h3>🔬 Propriétés Physiques</h3>
+                    <table style="width: 100%;">
+                        {% for c in data.compound_info %}
+                        <tr>
+                            <td><strong>{{ c.name }}</strong></td>
+                            <td>Tb: {{ c.Tb if c.Tb is not none else "N/A" }} K</td>
+                            <td>Mw: {{ c.Mw if c.Mw is not none else "N/A" }} g/mol</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <div class="distillation-calculation-card">
+                    <h3>📈 Composition</h3>
+                    <table style="width: 100%;">
+                        {% for i in range(data.compounds|length) %}
+                        <tr>
+                            <td><strong>{{ data.compounds[i] }}</strong></td>
+                            <td>{{ (data.z_F[i] * 100) | round(1) }}%</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+
+            <form method="POST" action="/resume">
+                {% for i in range(data.compounds|length) %}
+                    <input type="hidden" name="compounds" value="{{ data.compounds[i] }}">
+                    <input type="hidden" name="z_F" value="{{ data.z_F[i] }}">
+                {% endfor %}
+                <input type="hidden" name="F" value="{{ data.F }}">
+                <input type="hidden" name="P" value="{{ data.P }}">
+
+                <div style="background: #e8f4fc; padding: 1.5rem; border-radius: 10px; margin: 2rem 0;">
+                    <h3 style="color: #2c3e50; margin-bottom: 1rem;">🎯 Paramètres Avancés</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Récupération LK (%)</label>
+                            <input type="number" step="any" name="recovery_LK_D" value="0.95" style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;">
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Facteur Reflux</label>
+                            <input type="number" step="any" name="R_factor" value="1.3" style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;">
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Efficacité (%)</label>
+                            <input type="number" step="any" name="efficiency" value="0.7" style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="distillation-btn">
+                    Calculer Dimensionnement Complet →
+                </button>
+            </form>
+        </main>
+    </div>
+
+    <footer class="distillation-footer">
+        <p>&copy; 2025 DistillationPro</p>
+    </footer>
+</body>
+</html>

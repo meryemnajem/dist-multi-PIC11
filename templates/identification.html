@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identification LK/HK - Distillation</title>
+    <style>
+        /* === IDENTIFICATION.HTML STYLES === */
+        .identification-body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #2c3e50;
+        }
+
+        .identification-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .identification-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+     .identification-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #3498db; /* REMPLACE le gradient */
+}
+
+        .identification-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .identification-main {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .identification-page-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .identification-page-subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 3rem;
+        }
+
+        .identification-result {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .identification-compounds {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .identification-compound {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            min-width: 150px;
+        }
+
+        .identification-compound .type {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .identification-compound .name {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .identification-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .identification-form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .identification-form-group {
+            margin-bottom: 1rem;
+        }
+
+        .identification-form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .identification-form-input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .identification-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .identification-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.3);
+        }
+
+        .identification-footer {
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="identification-body">
+    <header class="identification-header">
+        <div class="identification-header-content">
+            <div class="identification-title">🧪 DistillationPro - Identification</div>
+            <div style="text-align: right;">
+                <div style="font-size: 0.9rem; color: #7f8c8d;">Étape 3/4</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="identification-container">
+        <main class="identification-main">
+            <h1 class="identification-page-title">Identification des Clés de Séparation</h1>
+            <p class="identification-page-subtitle">Détermination automatique du Light Key (LK) et Heavy Key (HK)</p>
+
+            <div class="identification-result">
+                <h2 style="margin-bottom: 2rem; font-size: 1.5rem;">🎯 Résultats d'Identification</h2>
+                <div class="identification-compounds">
+                    <div class="identification-compound">
+                        <div class="type">Light Key (LK)</div>
+                        <div class="name">{{ LK }}</div>
+                        <div style="font-size: 0.8rem; margin-top: 0.5rem;">Plus volatil</div>
+                    </div>
+                    <div class="identification-compound">
+                        <div class="type">Heavy Key (HK)</div>
+                        <div class="name">{{ HK }}</div>
+                        <div style="font-size: 0.8rem; margin-top: 0.5rem;">Moins volatil</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="identification-form">
+                <h3 style="color: #2c3e50; margin-bottom: 1.5rem;">📋 Paramètres de Distillation</h3>
+                <form method="POST" action="/resume">
+                    {% for comp in compounds %}
+                        <input type="hidden" name="compounds" value="{{ comp }}">
+                    {% endfor %}
+                    {% for x in z_F %}
+                        <input type="hidden" name="z_F" value="{{ x }}">
+                    {% endfor %}
+                    <input type="hidden" name="F" value="{{ F }}">
+                    <input type="hidden" name="P" value="{{ P }}">
+
+                    <div class="identification-form-grid">
+                        <div class="identification-form-group">
+                            <label class="identification-form-label">Récupération LK dans distillat (%)</label>
+                            <input type="number" step="any" name="recovery_LK_D" value="0.95" class="identification-form-input">
+                        </div>
+                        <div class="identification-form-group">
+                            <label class="identification-form-label">Récupération HK dans résidu (%)</label>
+                            <input type="number" step="any" name="recovery_HK_B" value="0.95" class="identification-form-input">
+                        </div>
+                        <div class="identification-form-group">
+                            <label class="identification-form-label">Facteur de Reflux (R/R<sub>min</sub>)</label>
+                            <input type="number" step="any" name="R_factor" value="1.3" class="identification-form-input">
+                        </div>
+                        <div class="identification-form-group">
+                            <label class="identification-form-label">Qualité alimentation (q)</label>
+                            <input type="number" step="any" name="q" value="1.0" class="identification-form-input">
+                        </div>
+                        <div class="identification-form-group">
+                            <label class="identification-form-label">Efficacité des plateaux (%)</label>
+                            <input type="number" step="any" name="efficiency" value="0.7" class="identification-form-input">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="identification-btn">
+                        Lancer la Simulation Complète →
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <footer class="identification-footer">
+        <p>&copy; 2025 DistillationPro</p>
+    </footer>
+</body>
+</html>

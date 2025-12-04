@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats - Distillation</title>
+
+    <style>
+        /* === RESUME.HTML STYLES === */
+        .resume-body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #2c3e50;
+        }
+
+        .resume-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .resume-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .resume-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .resume-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .resume-main {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .resume-page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            background: linear-gradient(135deg, #2c3e50, #3498db, #e74c3c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-page-subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+        }
+
+        .resume-success-banner {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: 0 10px 25px rgba(39, 174, 96, 0.3);
+        }
+
+        .resume-results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .resume-result-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            border-left: 4px solid #3498db;
+        }
+
+        .resume-result-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #3498db;
+            margin: 0.5rem 0;
+        }
+
+        .resume-result-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .resume-graphs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .resume-graph-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .resume-graph-card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .resume-download-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 1rem;
+        }
+
+        .resume-footer {
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="resume-body">
+
+    <header class="resume-header">
+        <div class="resume-header-content">
+            <div class="resume-title">🧪 DistillationPro - Résultats</div>
+            <div style="text-align: right;">Étape 4/4 - Simulation Terminée</div>
+        </div>
+    </header>
+
+    <div class="resume-container">
+        <main class="resume-main">
+
+            <h1 class="resume-page-title">Résultats de la Simulation</h1>
+            <p class="resume-page-subtitle">Dimensionnement complet de la colonne</p>
+
+            <div class="resume-success-banner">
+                <h2>✅ Simulation réussie</h2>
+            </div>
+
+            <!-- Résultats -->
+            <div class="resume-results-grid">
+
+                <div class="resume-result-card">
+                    <div class="resume-result-value">{{ results.N_real|round(1) }}</div>
+                    <div class="resume-result-label">Plateaux réels</div>
+                </div>
+
+                <div class="resume-result-card">
+                    <div class="resume-result-value">{{ results.R|round(2) }}</div>
+                    <div class="resume-result-label">Reflux R</div>
+                </div>
+
+                <div class="resume-result-card">
+                    <div class="resume-result-value">{{ results.D|round(1) }}</div>
+                    <div class="resume-result-label">Distillat (mol/s)</div>
+                </div>
+
+                <div class="resume-result-card">
+                    <div class="resume-result-value">{{ results.B|round(1) }}</div>
+                    <div class="resume-result-label">Résidu (mol/s)</div>
+                </div>
+
+                <div class="resume-result-card">
+                    <div class="resume-result-value">{{ results.feed_stage }}</div>
+                    <div class="resume-result-label">Plateau alimentation</div>
+                </div>
+
+                <div class="resume-result-card">
+                    <div class="resume-result-value">{{ (results.efficiency * 100)|round(0) }}%</div>
+                    <div class="resume-result-label">Efficacité</div>
+                </div>
+
+            </div>
+
+            <!-- Graphiques -->
+            <h2 style="margin-top: 2rem;">Visualisations</h2>
+
+            <div class="resume-graphs-container">
+
+                <div class="resume-graph-card">
+                    <h3>Bilan matière</h3>
+                    <img src="{{ url_for('static', filename='btx_bilan_matiere.png') }}">
+                </div>
+
+                <div class="resume-graph-card">
+                    <h3>Résultats Shortcut</h3>
+                    <img src="{{ url_for('static', filename='btx_shortcut_results.png') }}">
+                </div>
+
+                <div class="resume-graph-card">
+                    <h3>Profils de composition</h3>
+                    <img src="{{ url_for('static', filename='btx_composition_profiles.png') }}">
+                </div>
+
+                <div class="resume-graph-card">
+                    <h3>Profil température</h3>
+                    <img src="{{ url_for('static', filename='btx_temperature_profile.png') }}">
+                </div>
+
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="/" class="resume-download-btn">🔄 Nouvelle simulation</a>
+                <a href="#" class="resume-download-btn" onclick="window.print()">🖨️ Imprimer</a>
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="resume-footer">
+        © 2025 DistillationPro  
+    </footer>
+
+</body>
+</html>

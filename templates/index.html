@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - Distillation Multicomposants</title>
+    <style>
+        /* === INDEX.HTML STYLES === */
+        .index-body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #2c3e50;
+        }
+
+        .index-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .index-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .index-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #3498db; /* REMPLACE le gradient */
+}
+
+        .index-developer {
+            text-align: right;
+        }
+
+        .index-developer-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .index-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .index-main {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .index-welcome-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    color: #2c3e50; /* REMPLACE le gradient */
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+        .index-welcome-subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .index-compounds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .index-compound-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .index-compound-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border-color: #3498db;
+        }
+
+        .index-compound-card input {
+            transform: scale(1.2);
+            margin-right: 0.5rem;
+        }
+
+        .index-form-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .index-form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .index-form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .index-form-input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .index-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .index-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .index-footer {
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="index-body">
+    <header class="index-header">
+        <div class="index-header-content">
+            <div class="index-title">🧪 DistillationPro</div>
+            <div class="index-developer">
+                <div class="index-developer-name"></div>
+                <div>Plateforme de Simulation</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="index-container">
+        <main class="index-main">
+            <h1 class="index-welcome-title">Simulation de Distillation Multicomposants</h1>
+            <p class="index-welcome-subtitle">Sélectionnez les composés et définissez les conditions opératoires</p>
+
+            <form method="POST" action="/properties">
+                <div class="index-form-section">
+                    <h2 style="color: #2c3e50; margin-bottom: 1rem;">Choix des Composés</h2>
+                    <div class="index-compounds-grid">
+                        {% for comp in compounds %}
+                        <label class="index-compound-card">
+                            <input type="checkbox" name="compounds" value="{{ comp }}">
+                            {{ comp }}
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="index-form-section">
+                    <h2 style="color: #2c3e50; margin-bottom: 1rem;">Conditions Opératoires</h2>
+                    <div class="index-form-group">
+                        <label class="index-form-label">Débit d'alimentation F (kmol/h)</label>
+                        <input type="number" step="any" name="F" class="index-form-input" required>
+                    </div>
+                    <div class="index-form-group">
+                        <label class="index-form-label">Pression P (bar)</label>
+                        <input type="number" step="any" name="P" class="index-form-input" required>
+                    </div>
+                </div>
+
+                <div class="index-form-section">
+                    <h2 style="color: #2c3e50; margin-bottom: 1rem;">Composition du Mélange</h2>
+                    <p style="color: #7f8c8d; margin-bottom: 1rem;">Fractions molaires (doivent sommer à 1)</p>
+                    {% for i in range(compounds|length) %}
+                    <div class="index-form-group">
+                        <label class="index-form-label">{{ compounds[i] }}</label>
+                        <input type="number" step="any" name="comp_{{ i }}" class="index-form-input" required>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <button type="submit" class="index-btn">Calculer les Propriétés →</button>
+            </form>
+        </main>
+    </div>
+
+    <footer class="index-footer">
+        <p>&copy; 2025 DistillationPro</p>
+    </footer>
+</body>
+</html>
